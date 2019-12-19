@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99341C3C23ABEAF200ACDE98 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99341C3B23ABEAF200ACDE98 /* Notifications.swift */; };
 		9D163DAF2153758F00C55F30 /* PlanetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D163DAE2153758F00C55F30 /* PlanetDetailViewController.swift */; };
 		9DDBBD072113609700A55978 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDBBD062113609700A55978 /* AppDelegate.swift */; };
 		9DDBBD0C2113609700A55978 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DDBBD0A2113609700A55978 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		99341C3B23ABEAF200ACDE98 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		9D163DAE2153758F00C55F30 /* PlanetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailViewController.swift; sourceTree = "<group>"; };
 		9DDBBD032113609700A55978 /* Planets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DDBBD062113609700A55978 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			children = (
 				9DDBBD062113609700A55978 /* AppDelegate.swift */,
 				9DDBBD2C211376BE00A55978 /* SettingsKeys.swift */,
+				99341C3B23ABEAF200ACDE98 /* Notifications.swift */,
 				9DDBBD1A211360D500A55978 /* Model */,
 				9DDBBD1C211360E000A55978 /* Model Controller */,
 				9DDBBD272113679300A55978 /* View Controllers */,
@@ -197,6 +200,7 @@
 				9DDBBD212113661F00A55978 /* PlanetCollectionViewCell.swift in Sources */,
 				9DDBBD262113678F00A55978 /* PlanetsCollectionViewController.swift in Sources */,
 				9D163DAF2153758F00C55F30 /* PlanetDetailViewController.swift in Sources */,
+				99341C3C23ABEAF200ACDE98 /* Notifications.swift in Sources */,
 				9DDBBD1F211360F500A55978 /* PlanetController.swift in Sources */,
 				9DDBBD072113609700A55978 /* AppDelegate.swift in Sources */,
 				9DDBBD19211360D100A55978 /* Planet.swift in Sources */,

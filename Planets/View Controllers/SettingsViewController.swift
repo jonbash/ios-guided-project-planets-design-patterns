@@ -9,7 +9,6 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
     @IBOutlet weak var shouldShowPlutoSwitch: UISwitch!
 
     override func viewWillAppear(_ animated: Bool) {
@@ -25,5 +24,7 @@ class SettingsViewController: UIViewController {
     @IBAction func changeShouldShowPluto(_ sender: UISwitch) {
         let userDefaults = UserDefaults.standard
         userDefaults.set(sender.isOn, forKey: .shouldShowPlutoKey)
+        
+        NotificationCenter.default.post(name: .plutoSwitchWasFlipped, object: self)
     }
 }

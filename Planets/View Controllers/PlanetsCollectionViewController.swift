@@ -11,27 +11,29 @@ import UIKit
 
 
 class PlanetsCollectionViewController: UICollectionViewController {
-    
     // MARK: - Properties
     
     let planetController = PlanetController()
     
-    var planets: [Planet] {
-        let shouldShowPluto = UserDefaults.standard.bool(forKey: .shouldShowPlutoKey)
-        return shouldShowPluto ? planetController.planetsWithPluto : planetController.planetsWithoutPluto
-    }
+    // MARK: - Methods
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateViews),
+            name: .plutoSwitchWasFlipped,
+            object: nil)
 		updateViews()
 	}
-	
+    
+    @objc
 	func updateViews() {
         collectionView?.reloadData()
 	}
     
-    // MARK: - Navigation
+    // MARK: Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowSettings" {
@@ -48,7 +50,7 @@ class PlanetsCollectionViewController: UICollectionViewController {
             guard let indexPath = collectionView?.indexPathsForSelectedItems?.first else { return }
 			
 			guard let detailVC = segue.destination as? PlanetDetailViewController else { return }
-            detailVC.planet = planets[indexPath.row]
+            detailVC.planet = planetController.planets[indexPath.row]
         }
     }
 	
@@ -61,13 +63,13 @@ class PlanetsCollectionViewController: UICollectionViewController {
 // MARK: UICollectionViewDataSource
 extension PlanetsCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return planets.count
+        return planetController.planets.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlanetCell", for: indexPath) as! PlanetCollectionViewCell
         
-        let planet = planets[indexPath.item]
+        let planet = planetController.planets[indexPath.item]
         cell.imageView.image = planet.image
         cell.textLabel.text = planet.name
         

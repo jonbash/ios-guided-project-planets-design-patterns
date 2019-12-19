@@ -35,4 +35,36 @@ class PlanetDetailViewController: UIViewController {
         imageView.image = planet.image
         label.text = planet.name
     }
+    
+    // MARK: - State Restoration
+    
+    override func encodeRestorableState(with coder: NSCoder) {
+        defer { super.encodeRestorableState(with: coder) }
+        
+        // Planet -> Data -> Encode
+        var planetData: Data?
+        
+        do {
+            planetData = try PropertyListEncoder().encode(planet)
+        } catch {
+            NSLog("Error encoding planets: \(error)")
+        }
+        
+        guard let thisPlanet = planetData else { return }
+        
+        coder.encode(thisPlanet, forKey: .planetRestorationData)
+    }
+    
+    override func decodeRestorableState(with coder: NSCoder) {
+        defer { super.decodeRestorableState(with: coder) }
+        
+        // Data -> Planet -> set planet var
+        guard let planetData = coder
+            .decodeObject(forKey: .planetRestorationData) as? Data
+            else { return }
+        
+        self.planet = try? PropertyListDecoder()
+            .decode(Planet.self, from: planetData)
+        
+    }
 }
